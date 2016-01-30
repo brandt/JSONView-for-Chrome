@@ -26,6 +26,6 @@
     "close_icon.gif",
     "error.gif"
   ],
-  "permissions" : ["http://*/", "https://*/", "ftp://*/"],
+  "permissions" : [],
   "manifest_version": 2
 }
