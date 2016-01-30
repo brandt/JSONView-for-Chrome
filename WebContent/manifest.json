@@ -1,8 +1,8 @@
 {
   "name": "JSONView",
   "icons": {
-	"16": "jsonview16.png",
-	"48": "jsonview48.png",
+    "16": "jsonview16.png",
+    "48": "jsonview48.png",
     "128": "jsonview128.png"},
   "version": "0.0.32.2",
   "description": "Validate and view JSON documents",
@@ -13,10 +13,10 @@
     ]
   },
   "content_scripts": [{
-	  "matches": ["http://*/*.json*", "https://*/*.json*", "ftp://*/*.json*", "file:///*.json*"],
-	  "js": ["content.js"],
-	  "run_at": "document_end",
-	  "all_frames": true
+    "matches": ["http://*/*.json*", "https://*/*.json*", "ftp://*/*.json*", "file:///*.json*"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": true
   }],
   "web_accessible_resources": [
     "jsonview.css",
