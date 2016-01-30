@@ -26,6 +26,6 @@
     "close_icon.gif",
     "error.gif"
   ],
-  "permissions" : ["clipboardWrite", "http://*/", "contextMenus", "https://*/", "ftp://*/"],
+  "permissions" : ["http://*/", "https://*/", "ftp://*/"],
   "manifest_version": 2
 }

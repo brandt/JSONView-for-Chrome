@@ -75,7 +75,6 @@ function displayUI(theme, html) {
 	document.body.addEventListener('click', ontoggle, false);
 	document.body.addEventListener('mouseover', onmouseMove, false);
 	document.body.addEventListener('click', onmouseClick, false);
-	document.body.addEventListener('contextmenu', onContextMenu, false);
 	expandElement.addEventListener('click', onexpand, false);
 	reduceElement.addEventListener('click', onreduce, false);
 	optionsElement.addEventListener("click", function() {
@@ -230,23 +229,6 @@ function onmouseClick() {
 	selectedLI = getParentLI(event.target);
 	if (selectedLI) {
 		selectedLI.firstChild.classList.add("selected");
-	}
-}
-
-function onContextMenu() {
-	var currentLI, statusElement, selection = "", i, value;
-	currentLI = getParentLI(event.target);
-	statusElement = document.querySelector(".status");
-	if (currentLI) {
-		if (Array.isArray(jsonObject))
-			value = eval("(jsonObject" + statusElement.innerText + ")");
-		else
-			value = eval("(jsonObject." + statusElement.innerText + ")");
-		port.postMessage({
-			copyPropertyPath : true,
-			path : statusElement.innerText,
-			value : typeof value == "object" ? JSON.stringify(value) : value
-		});
 	}
 }
 

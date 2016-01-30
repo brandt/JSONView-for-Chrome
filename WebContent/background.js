@@ -24,30 +24,6 @@ function copy(value) {
 	document.body.removeChild(selElement);
 }
 
-function refreshMenuEntry() {
-	var options = localStorage.options ? JSON.parse(localStorage.options) : {};
-	if (options.addContextMenu && !copyPathMenuEntryId) {
-		copyPathMenuEntryId = chrome.contextMenus.create({
-			title : "Copy path",
-			contexts : [ "page", "link" ],
-			onclick : function(info, tab) {
-				copy(path);				
-			}
-		});
-		copyValueMenuEntryId = chrome.contextMenus.create({
-			title : "Copy value",
-			contexts : [ "page", "link" ],
-			onclick : function(info, tab) {
-				copy(value);				
-			}
-		});
-	}
-	if (!options.addContextMenu && copyPathMenuEntryId) {
-		chrome.contextMenus.remove(copyPathMenuEntryId);
-		chrome.contextMenus.remove(copyValueMenuEntryId);
-		copyPathMenuEntryId = null;
-	}
-}
 
 function init() {
 	chrome.runtime.onConnect.addListener(function(port) {
@@ -102,16 +78,11 @@ function init() {
 			}
 		});
 	});
-	refreshMenuEntry();
 }
 
 var options = {};
 if (localStorage.options)
 	options = JSON.parse(localStorage.options);
-if (typeof options.addContextMenu == "undefined") {
-	options.addContextMenu = true;
-	localStorage.options = JSON.stringify(options);
-}
 
 if (!localStorage.theme)
 	getDefaultTheme(function(theme) {
