@@ -26,7 +26,8 @@ function valueToHTML(value) {
 		output += decorateWithSpan(value, "type-number");
 	} else if (valueType == "string") {
 		if (/^(http|https):\/\/[^\s]+$/.test(value)) {
-			output += decorateWithSpan('"', "type-string") + '<a href="' + value + '">' + htmlEncode(value) + '</a>' + decorateWithSpan('"', "type-string");
+			var uri = encodeURI(value);
+			output += decorateWithSpan('"', "type-string") + '<a href="' + uri + '">' + htmlEncode(uri) + '</a>' + decorateWithSpan('"', "type-string");
 		} else {
 			output += decorateWithSpan('"' + value + '"', "type-string");
 		}
