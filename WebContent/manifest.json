@@ -13,7 +13,7 @@
     ]
   },
   "content_scripts": [{
-	  "matches": ["http://*/*", "https://*/*", "ftp://*/*", "file:///*"],
+	  "matches": ["http://*/*.json*", "https://*/*.json*", "ftp://*/*.json*", "file:///*.json*"],
 	  "js": ["content.js"],
 	  "run_at" : "document_end",
 	  "all_frames" : true
