@@ -8,10 +8,6 @@ function initOptions() {
 		options.injectInFrame = injectInFrameInput.checked;
 		localStorage.options = JSON.stringify(options);
 	});
-
-	document.getElementById("open-editor").addEventListener("click", function() {
-		location.href = "csseditor.html";
-	}, false);
 }
 
 addEventListener("load", initOptions, false);

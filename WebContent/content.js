@@ -63,7 +63,7 @@ function displayError(error, loc, offset) {
 	history.replaceState({}, "", "#");
 }
 
-function displayUI(theme, html) {
+function displayUI(html) {
 	var statusElement;
 	var toolboxElement;
 	var expandElement;
@@ -73,7 +73,7 @@ function displayUI(theme, html) {
 	var content = "";
 
 	content += '<link rel="stylesheet" type="text/css" href="' + chrome.runtime.getURL("jsonview-core.css") + '">';
-	content += "<style>" + theme + "</style>";
+	content += '<link rel="stylesheet" type="text/css" href="' + chrome.runtime.getURL("jsonview.css") + '">';
 	content += html;
 	document.body.innerHTML = content;
 
@@ -295,7 +295,7 @@ function init(data) {
 
 		if (msg.onjsonToHTML) {
 			if (msg.html) {
-				displayUI(msg.theme, msg.html);
+				displayUI(msg.html);
 			} else if (msg.json) {
 				port.postMessage({
 					getError: true,
